@@ -1,0 +1,223 @@
+/* ============================================
+   Custom Animations & Enhanced Styles
+   (Tailwind CSS handles most styling)
+   ============================================ */
+
+/* Custom Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in-up-delay-1 {
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.animate-fade-in-up-delay-2 {
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+.animate-fade-in-up-delay-3 {
+    animation: fadeInUp 0.6s ease-out 0.6s both;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Section Title Underline */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, currentColor, transparent);
+    border-radius: 2px;
+}
+
+/* Project Card Accent Bar */
+.project-card:hover .project-accent-bar {
+    transform: scaleX(1);
+}
+
+/* Tech Card Accent Bar */
+.tech-card:hover .tech-accent-bar {
+    transform: scaleX(1);
+}
+
+/* Active Navigation Link */
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+}
+
+/* Mobile Menu Animation */
+.mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.mobile-menu.active {
+    max-height: 500px;
+    opacity: 1;
+}
+
+/* Hamburger Menu Animation */
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Smooth transitions for sections */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tech cards animation */
+.tech-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced hover effects */
+.project-card,
+.tech-card {
+    position: relative;
+}
+
+.project-card::before,
+.tech-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(153, 27, 27, 0.1), rgba(220, 38, 38, 0.1));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover::before,
+.tech-card:hover::before {
+    opacity: 1;
+}
+
+/* Glass morphism effect */
+.backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar (optional) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #991b1b;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7f1d1d;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #ef4444;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #dc2626;
+}
+
+/* Enhanced focus states for accessibility */
+*:focus-visible {
+    outline: 2px solid #991b1b;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.dark *:focus-visible {
+    outline-color: #ef4444;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading animation for tech cards */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tech-card {
+    animation: slideInUp 0.6s ease-out forwards;
+}
